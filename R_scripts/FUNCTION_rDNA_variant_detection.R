@@ -16,7 +16,7 @@ rDNA_variant_detection <- function(depth_cutoff = 100, SB_threshold = 0.80, frac
     chr45S_ <- read.table(paste(input_directory, files[index], sep = '/'), comment.char="", header=TRUE, colClasses = c(rep("NULL", 22), rep("numeric", 2), rep("NULL", 4), rep("numeric", 2), rep("NULL", 4), rep("numeric", 2), rep("NULL", 4), rep("numeric", 2), rep("NULL", 4), rep("numeric", 2), rep("NULL", 4), rep("numeric", 2), rep("NULL", 9)), sep="\t")
     
     chr45S <- cbind(chr45S, chr45S_)
-    #chr45S[,1] <- chr45S[,2] + chr45S[,4] + chr45S[,5] + chr45S[,6] + chr45S[,7]
+    chr45S[,1] <- chr45S[,2] + chr45S[,4] + chr45S[,5] + chr45S[,6] + chr45S[,7]
     chr45S[,1] <- sapply(chr45S[,1], function(x){if(x< depth_cutoff ){x<-NA}else{x<-x}})
     chr45S[,2:7] <- chr45S[,2:7] / chr45S[,1]
     
